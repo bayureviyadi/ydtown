@@ -41,7 +41,7 @@ const dataProperti = [
         nama: "Rumah dengan Ruko",
         status: "Terjual",
         identitas: "Rumah & Ruko",
-        lokasi: "Area Komersial Strategis",
+        lokasi: "Desa Panjalin Kidul, Majalengka",
         harga: 2100000000,
         nego: false,
         gambar: ["assets/img/panjalin.jpeg"],
