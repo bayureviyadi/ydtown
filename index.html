@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ydtown | Real Estate & Property Assets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <img class="h-12 w-auto shadow-sm rounded" src="assets/img/ydtown.jpeg" alt="Ydtown Logo">
+                    <span class="ml-3 text-2xl font-bold tracking-tighter text-slate-800">YDTOWN</span>
+                </div>
+
+                <div class="hidden sm:block flex-1 max-w-md mx-8">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                            <i class="fas fa-search text-xs"></i>
+                        </span>
+                        <input type="text" id="searchInput" onkeyup="searchProperty()" 
+                            class="block w-full pl-10 pr-3 py-2.5 border border-slate-200 rounded-full bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:bg-white transition duration-200 text-sm" 
+                            placeholder="Cari lokasi atau tipe aset...">
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-5 text-slate-600">
+                    <a href="#" class="hover:text-pink-600 transition"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://wa.me/6281312092118" class="hover:text-green-600 transition"><i class="fab fa-whatsapp text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-slate-900 py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-4">
+                Aset Properti <span class="text-amber-400 italic">Pilihan.</span>
+            </h1>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto font-light">
+                YD TOWN hadir untuk membantu Anda menemukan properti impian!
+            </p>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 mt-10 flex flex-wrap gap-3 justify-center">
+        <button onclick="filterByStatus('Semua')" class="px-8 py-2.5 rounded-full bg-slate-900 text-white text-xs font-bold uppercase tracking-widest hover:bg-slate-800 transition shadow-lg shadow-slate-200">Semua</button>
+        <button onclick="filterByStatus('Dijual')" class="px-8 py-2.5 rounded-full bg-white border border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-widest hover:bg-slate-50 transition">Dijual</button>
+        <button onclick="filterByStatus('Terjual')" class="px-8 py-2.5 rounded-full bg-white border border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-widest hover:bg-slate-50 transition">Terjual</button>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        <div id="property-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="animate-pulse bg-white p-4 rounded-3xl border border-slate-100">
+                <div class="bg-slate-200 h-64 rounded-2xl mb-4"></div>
+                <div class="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
+                <div class="h-4 bg-slate-200 rounded w-1/2"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="propertyModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/95 backdrop-blur-md">
+        <div class="bg-white w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-[2.5rem] relative shadow-2xl border border-white/20">
+            <button onclick="closeModal()" class="fixed top-8 right-8 bg-white text-slate-900 w-12 h-12 rounded-full flex items-center justify-center shadow-2xl z-[110] hover:scale-110 transition duration-200">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            
+            <div id="modalContent" class="outline-none">
+                </div>
+        </div>
+    </div>
+
+    <footer class="bg-white border-t border-slate-100 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-6">YDTOWN</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Kami siap membantu dalam penjualan atau pencarian rumah hunian, tempat usaha, gudang, tanah untuk berbagai keperluan, serta properti lainnya. Selain itu, kami juga dapat membantu Anda menjual properti dengan mudah dan terpercaya.
+
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-slate-900 uppercase text-xs tracking-[0.2em]">Hubungi Founder</h4>
+                <ul class="text-slate-500 text-sm space-y-4">
+                    <li class="flex items-center justify-center md:justify-start">
+                        <span class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mr-3 text-slate-900"><i class="fas fa-phone text-xs"></i></span> 
+                        081312092118
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <span class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mr-3 text-slate-900"><i class="fas fa-envelope text-xs"></i></span> 
+                        bayureviyadi@gmail.com
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-slate-900 uppercase text-xs tracking-[0.2em]">Social Media</h4>
+                <div class="flex flex-col space-y-3 text-sm">
+                    <a href="https://linktr.ee/yd.com?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnS1gOwWjWPLG5kMym8fDyVodVMwYrGlTpSZMlJH5vl7kQHPZqUqDChKOfoII_aem_5MTXbhA8zsTk4JOioAGAyA" class="text-slate-500 hover:text-slate-900 transition flex items-center justify-center md:justify-start">
+                        <i class="fas fa-link mr-2 text-[10px]"></i> Linktree
+                    </a>
+                    <a href="https://www.instagram.com/yd_town?igsh=N3c3Z2M2czc5ZXls" class="text-slate-500 hover:text-slate-900 transition flex items-center justify-center md:justify-start">
+                        <i class="fab fa-instagram mr-2 text-[10px]"></i> Instagram @ydtown
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-20 pt-8 border-t border-slate-50 text-center">
+            <p class="text-slate-300 text-[10px] uppercase tracking-[0.3em]">&copy; 2026 YDTOWN Real Estate Development.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
